@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Un pedacito de cielo para ti</title>
+
+    <!-- Tipografías de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <main class="pagina-cielo">
+
+        <!-- Fondo del cielo nocturno -->
+        <div class="cielo" aria-hidden="true">
+            <div class="estrellas-fondo"></div>
+            <div class="luna"></div>
+        </div>
+
+        <!-- Primera escena: bienvenida -->
+        <section class="escena escena-inicio" id="inicio">
+            <div class="contenido-inicio">
+
+                <span class="detalle-inicio">
+                    Un pequeño detalle hecho con cariño
+                </span>
+
+                <h1>
+                    Un pedacito de cielo
+                    <span class="titulo-destacado">para ti</span>
+                </h1>
+
+                <p class="mensaje-inicio">
+                    No sabía muy bien cómo decirte algunas cosas bonitas...
+                    así que se me ocurrió una forma diferente.
+                </p>
+
+                <button
+                    type="button"
+                    class="boton-descubrir"
+                    id="boton-descubrir"
+                >
+                    Descubre algo
+                </button>
+
+            </div>
+        </section>
+
+        <!-- Segunda escena: estrellas especiales -->
+        <section class="escena escena-estrellas" id="estrellas" hidden>
+            <div class="contenido-estrellas">
+
+                <span class="detalle-estrellas" id="encabezado-estrellas">
+                    Un cielo lleno de pequeños secretos
+                </span>
+
+                <h2 id="titulo-estrellas">
+                    Cada estrella guarda algo para ti
+                </h2>
+
+                <p class="instruccion-estrellas" id="descripcion-estrellas">
+                    Toca las estrellas que más brillan
+                    y descubre lo que esconden.
+                </p>
+
+                <!-- Constelación interactiva -->
+                <div class="constelacion" id="constelacion">
+
+                    <!-- Líneas curvas del corazón -->
+                    <svg
+                        class="lineas-corazon"
+                        id="lineas-corazon"
+                        aria-hidden="true"
+                        preserveAspectRatio="none"
+                        hidden
+                    >
+                        <path
+                            id="trazo-corazon"
+                            d=""
+                            fill="none"
+                            stroke="#f5c4e5"
+                            stroke-width="1.8"
+                            vector-effect="non-scaling-stroke"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+
+                    <!-- Primera estrella -->
+                    <button
+                        class="estrella-interactiva estrella-1"
+                        type="button"
+                        data-estrella="1"
+                        aria-label="Descubrir primera estrella"
+                    >
+                        ✦
+                    </button>
+
+                    <!-- Segunda estrella -->
+                    <button
+                        class="estrella-interactiva estrella-2"
+                        type="button"
+                        data-estrella="2"
+                        aria-label="Descubrir segunda estrella"
+                    >
+                        ✦
+                    </button>
+
+                    <!-- Tercera estrella -->
+                    <button
+                        class="estrella-interactiva estrella-3"
+                        type="button"
+                        data-estrella="3"
+                        aria-label="Descubrir tercera estrella"
+                    >
+                        ✦
+                    </button>
+
+                    <!-- Cuarta estrella -->
+                    <button
+                        class="estrella-interactiva estrella-4"
+                        type="button"
+                        data-estrella="4"
+                        aria-label="Descubrir cuarta estrella"
+                    >
+                        ✦
+                    </button>
+
+                    <!-- Quinta estrella -->
+                    <button
+                        class="estrella-interactiva estrella-5"
+                        type="button"
+                        data-estrella="5"
+                        aria-label="Descubrir quinta estrella"
+                    >
+                        ✦
+                    </button>
+
+                    <!-- Sexta estrella -->
+                    <button
+                        class="estrella-interactiva estrella-6"
+                        type="button"
+                        data-estrella="6"
+                        aria-label="Descubrir sexta estrella"
+                    >
+                        ✦
+                    </button>
+
+                </div>
+
+                <!-- Mensaje auxiliar de las estrellas -->
+                <div
+                    class="tarjeta-mensaje"
+                    id="tarjeta-mensaje"
+                    aria-live="polite"
+                >
+                    <span class="numero-estrella" id="numero-estrella">
+                        Un pequeño secreto
+                    </span>
+
+                    <p id="texto-estrella">
+                        Hay palabras que brillan
+                        más cuando son para alguien especial.
+                    </p>
+                </div>
+
+                <!-- Contador e invitación romántica final -->
+                <button
+                    type="button"
+                    class="progreso-estrellas"
+                    id="progreso-estrellas"
+                    disabled
+                    aria-live="polite"
+                >
+                    Hay 6 pequeños secretos esperando por ti
+                </button>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal para los mensajes de las seis estrellas -->
+    <dialog
+        class="modal-estrella"
+        id="modal-estrella"
+        aria-labelledby="titulo-modal-estrella"
+        aria-describedby="mensaje-modal-estrella"
+    >
+        <div class="contenido-modal-estrella">
+
+            <!-- Botón de cerrar -->
+            <button
+                type="button"
+                class="cerrar-modal-estrella"
+                id="cerrar-modal-estrella"
+                aria-label="Cerrar mensaje"
+            >
+                &times;
+            </button>
+
+            <!-- Número de la estrella -->
+            <span
+                class="numero-modal-estrella"
+                id="numero-modal-estrella"
+            >
+                01
+            </span>
+
+            <!-- Título romántico -->
+            <h3 id="titulo-modal-estrella">
+                Una bonita coincidencia
+            </h3>
+
+            <!-- Mensaje romántico -->
+            <p id="mensaje-modal-estrella">
+                A veces la vida nos sorprende con personas
+                que no estábamos esperando conocer.
+                Llegan de manera sencilla, pero poco a poco
+                se vuelven alguien que nos alegra los días.
+                Y entre esas bonitas coincidencias,
+                me alegra mucho haberte encontrado.
+            </p>
+
+        </div>
+    </dialog>
+
+    <!-- Modal de la dedicatoria final -->
+    <dialog
+        class="modal-dedicatoria"
+        id="modal-dedicatoria"
+        aria-labelledby="titulo-dedicatoria"
+        aria-describedby="mensaje-dedicatoria"
+    >
+        <div class="contenido-modal-dedicatoria">
+
+            <!-- Botón de cerrar -->
+            <button
+                type="button"
+                class="cerrar-modal-dedicatoria"
+                id="cerrar-modal-dedicatoria"
+                aria-label="Cerrar dedicatoria"
+            >
+                &times;
+            </button>
+
+            <!-- Fotografía de la dedicatoria -->
+            <img
+                src="malory.jpeg"
+                alt="Fotografía de Malory"
+                class="decoracion-dedicatoria foto-dedicatoria"
+            >
+
+            <!-- Título de la dedicatoria -->
+            <h3 id="titulo-dedicatoria">
+                Este pedacito de cielo es para ti
+            </h3>
+
+            <!-- Primer párrafo -->
+            <p
+                class="mensaje-modal-dedicatoria"
+                id="mensaje-dedicatoria"
+            >
+                Quería guardar algo para el final.
+                Hice este pequeño cielo pensando en ti,
+                para regalarte un pedacito de lo que siento.
+            </p>
+
+            <!-- Segundo párrafo -->
+            <p class="despedida-modal-dedicatoria">
+                Detrás de cada estrella hay mucho cariño
+                que quería compartir contigo.
+                Y aunque no siempre encuentre las palabras
+                perfectas, hay algo que quiero decirte
+                de corazón:
+            </p>
+
+            <!-- Declaración final -->
+            <p class="firma-amor-dedicatoria">
+                Te amo con toda mi alma.
+            </p>
+
+            <!-- Botón para volver a descubrir las estrellas -->
+            <button
+                type="button"
+                class="boton-descubrir"
+                id="boton-repetir-modal"
+            >
+                Volver a mirar las estrellas
+            </button>
+
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+</body>
+</html>
